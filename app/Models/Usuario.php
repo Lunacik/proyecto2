@@ -66,5 +66,6 @@ class Usuario extends Authenticatable
         return $this->hasOne(User::class,'usuario_ci','ci');
      }
      
+     
 
 }

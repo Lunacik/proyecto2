@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbogadoController;
 use App\Http\Controllers\CasoController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -74,7 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/servicios', [ServicioController::class, 'store'])->name('servicio.store');
     Route::put('/servicios/{codigo}', [ServicioController::class, 'update'])->name('servicio.update');
 
-    Route::get('/citas', function () {
-        return 'Loading...';
-    })->name('cita');
+    //Citas
+    Route::get('/citas', [CitaController::class, 'index'])->name('cita');
+    Route::post('/citas', [CitaController::class, 'store'])->name('cita.store');
+    Route::put('/citas/{numero}', [CitaController::class, 'update'])->name('cita.update');
 });
