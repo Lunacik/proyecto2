@@ -2,7 +2,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
        <ul class="space-y-2 font-medium">
           <li>
-             <a href="/dashboard" class="flex items-center p-2 
+             <a href="{{route('dashboard')}}" class="flex items-center p-2 
              text-gray-900 rounded-lg hover:bg-gray-100 group"
              {{request()->path()==='dashboard'?'bg-gray-100':''}}">
                 <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -14,7 +14,7 @@
              </a>
           </li>
           <li>
-             <a href="/casos" class="flex items-center p-2 text-gray-900 rounded-lg 
+             <a href="{{route('caso')}}" class="flex items-center p-2 text-gray-900 rounded-lg 
              hover:bg-gray-100 group
              {{request()->path()==='casos'?'bg-gray-100':''}}">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
@@ -25,7 +25,7 @@
              </a>
           </li>
           <li>
-             <a href="/citas" class="flex items-center p-2 text-gray-900 rounded-lg
+             <a href="{{route('cita')}}" class="flex items-center p-2 text-gray-900 rounded-lg
               hover:bg-gray-100 group
                {{request()->path()==='citas'?'bg-gray-100':''}}">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -37,7 +37,7 @@
           </li>
 
           <li>
-             <a href="/users" class="flex items-center p-2 text-gray-900 rounded-lg
+             <a href="{{route('usuario')}}" class="flex items-center p-2 text-gray-900 rounded-lg
               hover:bg-gray-100 group
               {{request()->path()==='users'?'bg-gray-100':''}}">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -48,7 +48,7 @@
           </li>
 
           <li>
-            <a href="/abogados" class="flex items-center p-2 text-gray-900 rounded-lg
+            <a href="{{route('abogado')}}" class="flex items-center p-2 text-gray-900 rounded-lg
              hover:bg-gray-100 group
              {{request()->path()==='abogados'?'bg-gray-100':''}}">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -60,7 +60,7 @@
          
 
          <li>
-            <a href="/clientes" class="flex items-center p-2 text-gray-900 rounded-lg
+            <a href="{{route('cliente')}}" class="flex items-center p-2 text-gray-900 rounded-lg
              hover:bg-gray-100 group
              {{request()->path()==='clientes'?'bg-gray-100':''}}">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -72,7 +72,7 @@
          
 
           <li>
-             <a href="/servicios" class="flex items-center p-2  text-gray-900 rounded-lg 
+             <a href="{{route('servicio')}}" class="flex items-center p-2  text-gray-900 rounded-lg 
              hover:bg-gray-100 group
              {{request()->path()==='servicios'?'bg-gray-100':''}}">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">

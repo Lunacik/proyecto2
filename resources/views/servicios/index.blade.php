@@ -101,7 +101,7 @@
 
             </div>
             <!-- Modal body -->
-            <form id="form-servicio-create" class="p-4 md:p-5" action="/servicios" method="POST">
+            <form id="form-servicio-create" class="p-4 md:p-5" action="{{route('servicio.store')}}" method="POST">
                 @csrf
 
                 <div class="grid gap-4 mb-4 grid-cols-2">
@@ -221,7 +221,9 @@
 
             let formUpdateServicio = document.getElementById('form-servicio-update')
 
-            formUpdateServicio.action = `/servicios/${value.codigo}`
+            const path=window.location.pathname;
+            
+            formUpdateServicio.action = `${path}/${value.codigo}`
 
             formUpdateServicio.nombre.value = value.nombre
             formUpdateServicio.descripcion.value = value.descripcion

@@ -5,7 +5,7 @@
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de creacion casos</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="/casos">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('caso.store')}}">
                 @csrf
 
                 <div class=" flex flex-col gap-4">

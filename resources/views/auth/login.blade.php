@@ -7,7 +7,7 @@
                     <h1 class="text-3xl p-1">Bienvenido</h1>
                 </div>
 
-                <form class="mx-auto p-4 rounded-lg" method="POST" action="/login" class="mb-5">
+                <form class="mx-auto p-4 rounded-lg" method="POST" action="./login" class="mb-5">
                     @csrf
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>

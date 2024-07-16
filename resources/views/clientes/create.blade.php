@@ -5,7 +5,7 @@
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de creacion cliente</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="/clientes">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('cliente.store')}}">
                 @csrf
 
                 <div class="relative z-0 w-full mb-5 group">

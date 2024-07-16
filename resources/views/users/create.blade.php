@@ -5,7 +5,7 @@
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de creacion de usuario</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="/users">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('usuario.store')}}">
                 @csrf
 
                 <div class="relative z-0 w-full mb-5 group">

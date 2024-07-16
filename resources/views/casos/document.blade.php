@@ -6,7 +6,7 @@
                 <h6 class="text-lg font-bold">Registro de documento para el caso : {{$caso->codigo}}</h6>
             </div>
 
-            <form class="max-w-md mx-auto" method="POST" action="/casos/{{$caso->codigo}}/documento/store">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('caso.documento.store',$caso->codigo)}}">
                 @csrf
 
                 <div class="relative z-0 w-full mb-5 group">

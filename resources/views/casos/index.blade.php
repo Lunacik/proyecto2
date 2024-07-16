@@ -5,7 +5,7 @@
 
             <div class="flex justify-between">
                 <h6 class="text-lg font-bold">Casos</h6>
-                <a href="/casos/create"
+                <a href="{{route('caso.create')}}"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
              focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
              focus:outline-none
@@ -58,7 +58,7 @@
                                         class="font-medium text-blue-600 box-content hover:underline">Editar</a>
 
 
-                                    <a href="/casos/{{ $casos->codigo }}"
+                                    <a href="{{route("caso.show",$casos->codigo)}}"
                                         class="font-medium text-blue-600 box-content hover:underline">Ver</a>
 
                                 </td>

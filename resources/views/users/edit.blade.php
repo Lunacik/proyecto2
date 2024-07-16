@@ -4,7 +4,7 @@
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de edicion usuario</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="/users/{{ $user->ci }}">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('usuario.update',$user->ci)}}">
                 @csrf
                 @method('PUT')
 

@@ -4,7 +4,7 @@
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de edicion cliente</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="/clientes/{{ $cliente->usuario->ci }}">
+            <form class="max-w-md mx-auto" method="POST" action="{{route('cliente.update', $cliente->usuario->ci) }}">
                 @csrf
                 @method('PUT')
 

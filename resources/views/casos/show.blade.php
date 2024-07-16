@@ -92,7 +92,7 @@
 
             <div class="flex justify-between">
                 <h3>Documentos</h3>
-                <a href="/casos/{{ $caso->codigo }}/documento/create"
+                <a href="{{route('caso.documento.create',$caso->codigo)}}"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
              focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
              focus:outline-none
@@ -142,7 +142,7 @@
 
             </div>
             <!-- Modal body -->
-            <form id="form-servicio-select" class="p-4 md:p-5" action="/casos/{{ $caso->codigo }}/servicio/store"
+            <form id="form-servicio-select" class="p-4 md:p-5" action="{{route('caso.servicio.store',$caso->codigo)}}"
                 method="POST">
                 @csrf
 

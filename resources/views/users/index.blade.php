@@ -5,7 +5,7 @@
 
             <div class="flex justify-between">
                 <h6 class="text-lg font-bold">Usuarios</h6>
-                <a href="/users/create"
+                <a href="{{route('usuario.create')}}"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
              focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
              focus:outline-none
@@ -59,7 +59,7 @@
                                     {{ ['1'=>'Abogado','2'=>'Cliente','3'=>'Administrador'][$user->tipo]}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="/users/{{ $user->ci }}/edit"
+                                    <a href="{{ route('usuario.edit',$user->ci) }}"
                                         class="font-medium text-blue-600 hover:underline">Editar</a>
                                 </td>
 
