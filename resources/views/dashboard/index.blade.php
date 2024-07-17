@@ -51,7 +51,7 @@
         
         const getServicios = async () => {
             try {
-                const response = await fetch('http://localhost/project/public/api/dashboard/servicios')
+                const response = await fetch('https://www.tecnoweb.org.bo/inf513/grupo03sa/project/public/api/dashboard/servicios')
                 const data = await response.json()
                  const result = data.map((value) => {
                      return{
@@ -69,7 +69,7 @@
 
         const getCitas = async () => {
             try {
-                const response = await fetch('http://localhost/project/public/api/dashboard/citas')
+                const response = await fetch('https://www.tecnoweb.org.bo/inf513/grupo03sa/project/public/api/dashboard/citas')
                 const data = await response.json()
                  const result = data.map((value) => value.cantidad)
                 return result;
@@ -140,7 +140,7 @@
 
                 yAxis: {
                     title: {
-                        text: 'Numero de citas'
+                        text: 'meses del año"'
                     }
                 },
 
