@@ -140,7 +140,7 @@
 
                 yAxis: {
                     title: {
-                        text: 'meses del año"'
+                        text: 'Cantidad de citas'
                     }
                 },
 
@@ -159,7 +159,7 @@
 
 
                 series: [{
-                    name: 'Citas',
+                    name: 'Meses del año ',
                     data: datas
                 }],
 
