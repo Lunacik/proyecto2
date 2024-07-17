@@ -58,7 +58,7 @@ class ClienteController extends Controller
         $user=new User();
         $user->usuario_ci=$usuario->ci;
         $user->email=$usuario->celectronico;
-        $user->password=$usuario->password;
+        $user->password=bcrypt($request->password);
         $user->save();
 
 

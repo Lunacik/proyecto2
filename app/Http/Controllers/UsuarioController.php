@@ -59,7 +59,7 @@ class UsuarioController extends Controller
 
         $user=new User();
         $user->email=$request->celectronico;
-        $user->password=$request->password;
+        $user->password=bcrypt($request->password);
         $user->usuario_ci=$request->ci;
         
         $user->save();

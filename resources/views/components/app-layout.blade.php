@@ -26,7 +26,33 @@
 
     {{ $slot }}
 
-    
+    <script >
+
+        const openSidebar=()=>{
+            const nav=document.getElementById('logo-sidebar')
+            const classNav=nav.classList.contains('-translate-x-full')
+
+            if(classNav){
+                nav.classList.remove('-translate-x-full')
+            }else{
+                nav.classList.add('-translate-x-full')
+            }
+        }
+
+        const openDropdown=()=>{
+            const dropd=document.getElementById('dropdown-user')
+            const classNav=dropd.classList.contains('hidden')
+            
+            
+            if(classNav){
+                dropd.classList.remove('hidden')
+            }else{
+                dropd.classList.add('hidden')
+            }
+        }
+        
+        
+    </script>
      
 </body>
 
