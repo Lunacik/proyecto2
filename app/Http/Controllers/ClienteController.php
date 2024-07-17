@@ -34,7 +34,7 @@ class ClienteController extends Controller
                 'nombre' => 'required',
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
                 'password' => 'required',
                 'nidentificacion'=>'required',
             ]
@@ -72,7 +72,7 @@ class ClienteController extends Controller
                 'nombre' => 'required',
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
                 'nidentificacion'=> 'required',
             ]
         );

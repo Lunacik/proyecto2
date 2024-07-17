@@ -35,7 +35,7 @@ class AbogadoController extends Controller
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
                 
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
                 'password' => 'required',
                 'codcol'=>'required',
                 'especialidad' => 'required',
@@ -77,7 +77,7 @@ class AbogadoController extends Controller
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
                 
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
                 'codcol'=>'required',
                 'especialidad' => 'required',
             ]

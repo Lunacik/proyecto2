@@ -40,7 +40,7 @@ class UsuarioController extends Controller
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
                 'tipo' => 'required',
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
                 'password' => 'required'
             ]
         );
@@ -76,7 +76,7 @@ class UsuarioController extends Controller
                 'fnacimiento' => 'required',
                 'celectronico' => 'required',
                 'tipo' => 'required',
-                'sexo' => 'required',
+                'sexo' => 'required|max:1',
             ]
         );
         
