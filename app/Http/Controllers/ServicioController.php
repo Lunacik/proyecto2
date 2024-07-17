@@ -45,4 +45,11 @@ class ServicioController extends Controller
 
         return redirect('/servicios');
     } 
+
+    public function delete($codigo){
+        $servicio=Servicio::findOrFail($codigo);
+        $servicio->delete();
+
+        return redirect('/servicios');
+    }
 }

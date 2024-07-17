@@ -8,6 +8,11 @@
     @vite('resources/css/app.css')
     <title>Estudio Jurídico Mallón y Asociados</title>
 
+    <link rel="stylesheet" href="./css/highchart.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 </head>
 
 <body class="h-screen w-screen">
@@ -15,7 +20,7 @@
 
     </header>
 
-    
+
     <x-nav-bar>
 
     </x-nav-bar>
@@ -26,34 +31,31 @@
 
     {{ $slot }}
 
-    <script >
+    <script>
+        const openSidebar = () => {
+            const nav = document.getElementById('logo-sidebar')
+            const classNav = nav.classList.contains('-translate-x-full')
 
-        const openSidebar=()=>{
-            const nav=document.getElementById('logo-sidebar')
-            const classNav=nav.classList.contains('-translate-x-full')
-
-            if(classNav){
+            if (classNav) {
                 nav.classList.remove('-translate-x-full')
-            }else{
+            } else {
                 nav.classList.add('-translate-x-full')
             }
         }
 
-        const openDropdown=()=>{
-            const dropd=document.getElementById('dropdown-user')
-            const classNav=dropd.classList.contains('hidden')
-            
-            
-            if(classNav){
+        const openDropdown = () => {
+            const dropd = document.getElementById('dropdown-user')
+            const classNav = dropd.classList.contains('hidden')
+
+
+            if (classNav) {
                 dropd.classList.remove('hidden')
-            }else{
+            } else {
                 dropd.classList.add('hidden')
             }
         }
-        
-        
     </script>
-     
+
 </body>
 
 </html>

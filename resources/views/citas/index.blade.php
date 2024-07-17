@@ -44,9 +44,19 @@
                                     {{ $cita->texto }}
                                 </td>
                                 <td class="px-6 py-4">
-
-                                    <button onclick='handleOpenModalUpdate({{ json_encode($cita) }})'
+                                    <div class="flex gap-1">
+                                        <button onclick='handleOpenModalUpdate({{ json_encode($cita) }})'
                                         class="font-medium text-blue-600 hover:underline">Editar</a>
+
+                                        <form method="POST" action="{{ route('cita.delete', $cita->numero) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="font-medium  hover:underline">Eliminar</button>
+                                        </form>
+                                    </div>
+
+                                    
                                 </td>
 
                             </tr>

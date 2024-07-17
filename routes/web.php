@@ -74,9 +74,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/servicios', [ServicioController::class, 'index'])->name('servicio');;
     Route::post('/servicios', [ServicioController::class, 'store'])->name('servicio.store');
     Route::put('/servicios/{codigo}', [ServicioController::class, 'update'])->name('servicio.update');
+    Route::delete('/servicios/{codigo}', [ServicioController::class, 'delete'])->name('servicio.delete');
 
     //Citas
     Route::get('/citas', [CitaController::class, 'index'])->name('cita');
     Route::post('/citas', [CitaController::class, 'store'])->name('cita.store');
     Route::put('/citas/{numero}', [CitaController::class, 'update'])->name('cita.update');
+    Route::delete('/citas/{numero}', [CitaController::class, 'delete'])->name('cita.delete');
 });
+
+Route::get('/api/dashboard/servicios',[DashboardController::class,'getCantidadServiciosDistintos']);
+Route::get('/api/dashboard/citas',[DashboardController::class,'getNowYearCantidadCitas']);

@@ -52,8 +52,18 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    <button onclick='handleOpenModalUpdate({{ json_encode($servicio) }})'
-                                        class="font-medium text-blue-600 hover:underline">Editar</a>
+                                    <div class="flex gap-1">
+                                        <button onclick='handleOpenModalUpdate({{ json_encode($servicio) }})'
+                                            class="font-medium text-blue-600 hover:underline">Editar</button>
+                                        <form method="POST" action="{{ route('servicio.delete', $servicio->codigo) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="font-medium  hover:underline">Eliminar</button>
+                                        </form>
+                                    </div>
+
+
                                 </td>
 
                             </tr>
@@ -101,7 +111,7 @@
 
             </div>
             <!-- Modal body -->
-            <form id="form-servicio-create" class="p-4 md:p-5" action="{{route('servicio.store')}}" method="POST">
+            <form id="form-servicio-create" class="p-4 md:p-5" action="{{ route('servicio.store') }}" method="POST">
                 @csrf
 
                 <div class="grid gap-4 mb-4 grid-cols-2">
@@ -221,8 +231,8 @@
 
             let formUpdateServicio = document.getElementById('form-servicio-update')
 
-            const path=window.location.pathname;
-            
+            const path = window.location.pathname;
+
             formUpdateServicio.action = `${path}/${value.codigo}`
 
             formUpdateServicio.nombre.value = value.nombre
@@ -242,5 +252,5 @@
             formUpdateServicio.submit()
         }
     </script>
-    
+
 </x-app-layout>

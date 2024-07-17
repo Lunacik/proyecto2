@@ -41,4 +41,10 @@ class CitaController extends Controller
 
         return redirect('/citas');
     } 
+    public function delete($codigo){
+        $servicio=Cita::findOrFail($codigo);
+        $servicio->delete();
+
+        return redirect('/citas');
+    }
 }
