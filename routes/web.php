@@ -6,14 +6,11 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ServicioController;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\UsuarioController;
-use App\Models\Servicio;
-use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -24,8 +21,6 @@ Route::post('/login', [LoginController::class, 'authenticated'])->name('login.au
 
 
 Route::middleware(['auth'])->group(function () {
-
-
 
     //Casos
     Route::get('/casos', [CasoController::class, 'index'])->name('caso');
@@ -68,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/{ci}/edit', [UsuarioController::class, 'edit'])->name('usuario.edit');
     Route::post('/users', [UsuarioController::class, 'store'])->name('usuario.store');
     Route::put('/users/{ci}', [UsuarioController::class, 'update'])->name('usuario.update');
+    Route::put('users/disabled/{ci}',[UsuarioController::class,'disabled'])->name('usuario.disable');
 
 
     //Servicios
@@ -81,7 +77,25 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/citas', [CitaController::class, 'store'])->name('cita.store');
     Route::put('/citas/{numero}', [CitaController::class, 'update'])->name('cita.update');
     Route::delete('/citas/{numero}', [CitaController::class, 'delete'])->name('cita.delete');
+
+    //Usuario/abogado citas
+    Route::get('/citas/usuario',[UsuarioController::class,'createCite'])->name('cita.usuario.create');
+    Route::post('/citas/usuario',[UsuarioController::class,'storeCite'])->name('cita.usuario.store');
+
+    //Pagos
+    Route::get('/pagos',[PagoController::class,'index'])->name('pago.index');
+    Route::get('/pagos/create',[PagoController::class,'create'])->name('pago.create');
+    Route::post('/pagos',[PagoController::class,'store'])->name('pago.store');
+    Route::get('/pagos/{codigo}/edit',[PagoController::class,'edit'])->name('pago.edit');
+    Route::put('/pagos/{codigo}',[PagoController::class,'update'])->name('pago.update');
+    Route::get('/pagos/{codigo}',[PagoController::class,'show'])->name('pago.show');
+
+
+
 });
 
-Route::get('/api/dashboard/servicios',[DashboardController::class,'getCantidadServiciosDistintos']);
-Route::get('/api/dashboard/citas',[DashboardController::class,'getNowYearCantidadCitas']);
+Route::get('/api/dashboard/servicios', [DashboardController::class, 'getCantidadServiciosDistintos']);
+Route::get('/api/dashboard/citas', [DashboardController::class, 'getNowYearCantidadCitas']);
+
+Route::post('/api/pagos/{codigo}/qr',[PagoController::class,'generateQr']);
+Route::post('/api/pagos/verify/callback',[PagoController::class,'callbackPay']);

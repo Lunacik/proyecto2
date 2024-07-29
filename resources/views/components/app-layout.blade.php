@@ -15,11 +15,9 @@
 
 </head>
 
-<body class="h-screen w-screen">
+<body class="dark:bg-gray-900 h-screen w-screen">
     <header>
-
     </header>
-
 
     <x-nav-bar>
 
@@ -54,6 +52,119 @@
                 dropd.classList.add('hidden')
             }
         }
+    </script>
+
+    <script>
+        const enable = document.getElementById('enablehour')
+        const disable = document.getElementById('disablehour')
+        enable.addEventListener('click', () => {
+            localStorage.setItem('autohour', 'false')
+            enable.hidden = true
+            disable.hidden = false
+
+        })
+
+        disable.addEventListener('click', () => {
+            localStorage.setItem('autohour', 'true')
+            enable.hidden = false
+            disable.hidden = true
+            const nowHour = new Date().getHours()
+            console.log(nowHour);
+            if (nowHour >= 8 && nowHour <= 18) {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+
+        })
+    </script>
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+
+
+        if (localStorage.getItem('autohour')) {
+            const enable = document.getElementById('enablehour')
+            const disable = document.getElementById('disablehour')
+            const flag = localStorage.getItem('autohour')
+            if (flag === 'true') {
+                enable.hidden = false
+                disable.hidden = true
+
+                const nowHour = new Date().getHours()
+                if (nowHour >= 8 && nowHour <= 18) {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
+                }
+
+            } else {
+                enable.hidden = true
+                disable.hidden = false
+                
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window
+                        .matchMedia(
+                            '(prefers-color-scheme: dark)').matches)) {
+                    
+                        document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark')
+                }
+
+            }
+        } else {
+            localStorage.setItem('autohour', 'true')
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                    '(prefers-color-scheme: dark)').matches)) {
+                
+                    document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        }
+    </script>
+    <script>
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        var themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+
+                // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+
+        });
     </script>
 
 </body>

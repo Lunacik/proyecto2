@@ -2,7 +2,7 @@
     <main class="p-4 sm:ml-64 h-full">
         <div class="p-4 mt-10">
             <div class="flex">
-                <h6 class="text-lg font-bold">
+                <h6 class="text-lg font-bold dark:text-white">
                     Detalles del Caso </h6>
             </div>
 
@@ -17,7 +17,7 @@
                         {{-- <p class="my-2">If you care for your time, I hands down would go with this."</p> --}}
                     </blockquote>
 
-                    <span>Abogado</span>
+                    <span class="dark:text-white">Abogado</span>
 
                     <figcaption class="flex p-2 ">
 
@@ -27,7 +27,7 @@
                         </div>
                     </figcaption>
 
-                    <span>Cliente</span>
+                    <span class="dark:text-white">Cliente</span>
 
                     <figcaption class="flex p-2 ">
 
@@ -41,13 +41,15 @@
 
                 <div>
                     <div class="flex justify-between p-2">
-                        <h3>Servicios</h3>
-                        <button onclick="handleOpenModalSelect()"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+                        <h3 class="dark:text-white">Servicios</h3>
+                        @if (auth()->user()->usuario->tipo != '2')
+                            <button onclick="handleOpenModalSelect()"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
              focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
              focus:outline-none
              
               ">Agregar</button>
+                        @endif
                     </div>
 
                     <div class="w-full grid grid-cols-2 lg:grid lg:grid-cols-4 p-1 gap-1
@@ -57,14 +59,11 @@
                             <div class="flex border border-gray-200 shadow rounded-lg">
 
                                 <div class="ms-3 text-[12px] flex flex-col">
-                                    <span
-                                        class="mb-1 text-gray-900 dark:text-white">{{ $servicio->nombre }}</span>
+                                    <span class="mb-1 text-gray-900 dark:text-white">{{ $servicio->nombre }}</span>
 
-                                        <a href=""
-                                            class="font-medium text-blue-600 box-content hover:underline">Cerrar</a>
-    
+                                    <a href=""
+                                        class="font-medium text-blue-600 box-content hover:underline">Cerrar</a>
                                 </div>
-
 
                                 <button type="button"
                                     class="ms-auto  bg-white justify-center
@@ -91,18 +90,20 @@
             </div>
 
             <div class="flex justify-between">
-                <h3>Documentos</h3>
-                <a href="{{route('caso.documento.create',$caso->codigo)}}"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+                <h3 class="dark:text-white">Documentos</h3>
+                @if (auth()->user()->usuario->tipo != '2')
+                    <a href="{{ route('caso.documento.create', $caso->codigo) }}"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
              focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
              focus:outline-none
              
               ">Agregar</a>
+                @endif
             </div>
 
             <div class="grid grid-cols-2 lg:grid lg:grid-cols-6 justify-center gap-1 w-full mt-2">
                 @foreach ($caso->documentos as $documento)
-                    <div class="flex flex-col gap-2 border border-gray-200 shadow rounded-lg p-4">
+                    <div class="flex flex-col gap-2 border border-gray-200 shadow rounded-lg p-4 dark:text-white">
                         <p>{{ $documento->nombre }}</p>
                         <span>{{ $documento->numero }}</span>
                     </div>
@@ -118,10 +119,10 @@
         style="transform: translate(-50%,-50%)">
 
         <!-- Modal content -->
-        <div class=" bg-white rounded-lg shadow min-w-96 ">
+        <div class=" bg-white rounded-lg shadow min-w-96 dark:bg-gray-700 ">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                <h3 class="text-lg font-semibold text-gray-900">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     Servicios
 
                 </h3>
@@ -142,23 +143,24 @@
 
             </div>
             <!-- Modal body -->
-            <form id="form-servicio-select" class="p-4 md:p-5" action="{{route('caso.servicio.store',$caso->codigo)}}"
-                method="POST">
+            <form id="form-servicio-select" class="p-4 md:p-5"
+                action="{{ route('caso.servicio.store', $caso->codigo) }}" method="POST">
                 @csrf
 
-                <div class="mb-4 grid-cols-2">
+                <div class="mb-4 grid-cols-2 ">
 
 
                     <div class="w-full">
                         <label for="underline_select" class="sr-only">Underline select</label>
                         <select id="underline_select" name="codigoservicio"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none 
+                            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2
+                             border-gray-200 appearance-none 
                         dark:text-gray-400 focus:outline-none focus:ring-0 focus:border-gray-200 peer
                         ">
-                            <option value="" selected>Seleccion un servicio</option>
+                            <option class="dark:bg-gray-700 dark:text-white" value="" selected>Seleccion un servicio</option>
 
                             @foreach ($servicios as $servicio)
-                                <option value="{{ $servicio->codigo }}">{{ $servicio->nombre }}</option>
+                                <option class="dark:bg-gray-700 dark:text-white" value="{{ $servicio->codigo }}">{{ $servicio->nombre }}</option>
                             @endforeach
 
                         </select>
@@ -193,4 +195,5 @@
             formSelectServicio.submit()
         }
     </script>
+
 </x-app-layout>

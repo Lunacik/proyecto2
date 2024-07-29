@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abogado;
+use App\Models\Counter;
 use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class AbogadoController extends Controller
 {
+    private static $CODIGO_COUNTER=6;
     public function index()
     {
+        Counter::plusCounter(static::$CODIGO_COUNTER);
+        $contador=Counter::getCounter(static::$CODIGO_COUNTER);
+
         $abogados = Abogado::all();
         
-        return view('abogados.index', ['abogados' => $abogados]);
+        return view('abogados.index', ['abogados' => $abogados,'contador'=>$contador]);
     }
 
     public function edit($ci)
@@ -105,4 +110,6 @@ class AbogadoController extends Controller
         
         return redirect('/abogados');
     }
+
+    
 }

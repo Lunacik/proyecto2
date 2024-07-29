@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,8 +26,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(Auth::user()->usuario->tipo=='2'){
-                return redirect()->intended('citas');
+            if(Auth::user()->usuario->tipo!=Usuario::$ABOGADO){
+                return redirect()->intended('casos');
             }
             
             return redirect()->intended('dashboard');

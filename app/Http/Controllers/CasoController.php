@@ -6,19 +6,46 @@ use App\Models\Abogado;
 use App\Models\Caso;
 use App\Models\CasoServicio;
 use App\Models\Cliente;
+use App\Models\Counter;
 use App\Models\Documento;
 use App\Models\Servicio;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CasoController extends Controller
 {
+    private static $CODIGO_COUNTER=2;
+
     public function index(){
+        
+        Counter::plusCounter(static::$CODIGO_COUNTER);
+        $contador=Counter::getCounter(static::$CODIGO_COUNTER);
+
+        $user=Auth::user()->usuario;
+        
+        if($user->tipo==Usuario::$ABOGADO){
+            $casos=Caso::where('ciabogado',$user->ci)->get();
+            return view('casos.index',['casos'=>$casos,'contador'=>$contador]);
+        }
+        
+        if($user->tipo==Usuario::$CLIENTE){
+            $casos=Caso::where('codcliente',$user->ci)->get();
+            return view('casos.index',['casos'=>$casos,'contador'=>$contador]);
+        }
+         
         $casos=Caso::all();
 
-        return view('casos.index',['casos'=>$casos]);
+        return view('casos.index',['casos'=>$casos,'contador'=>$contador]);
     }
     public function create(){
-        $abogados=Abogado::all();
+
+        $user=Auth::user()->usuario;
+        $abogados=[];
+        if($user->tipo==Usuario::$ADMINISTRADOR){
+            $abogados=Abogado::all();
+        }
+        
 
         $clientes=Cliente::all();
 
@@ -28,6 +55,7 @@ class CasoController extends Controller
     }
 
     public function store(Request $request){
+        
         $request->validate([
             'codcliente'=>'required',
             'ciabogado'=>'required',

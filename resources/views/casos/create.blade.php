@@ -3,26 +3,37 @@
     <main class="p-4 sm:ml-64 h-full">
         <div class="p-4 mt-10">
             <div class="flex justify-center">
-                <h6 class="text-lg font-bold">Formulario de creacion casos</h6>
+                <h6 class="text-lg font-bold dark:text-white">Formulario de creacion casos</h6>
             </div>
-            <form class="max-w-md mx-auto" method="POST" action="{{route('caso.store')}}">
+            <form class="max-w-md mx-auto" method="POST" action="{{ route('caso.store') }}">
                 @csrf
 
+                @if (auth()->user()->usuario->tipo == '1')
+                    <input hidden type="number" name="ciabogado" value="{{ auth()->user()->usuario->ci }}">
+                @endif
+
+
                 <div class=" flex flex-col gap-4">
-                    <div>
-                        <label for="underline_select" class="sr-only">Underline select</label>
-                        <select id="underline_select" name="ciabogado"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none 
+
+                    @if (auth()->user()->usuario->tipo == '3')
+                        <div>
+                            <label for="underline_select" class="sr-only">Underline select</label>
+                            <select id="underline_select" name="ciabogado"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none 
                         dark:text-gray-400 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                            <option value="" selected>Seleccion un abogado</option>
+                                <option value="" selected>Seleccion un abogado</option>
 
-                            @foreach ($abogados as $abogado)
-                                <option value="{{ $abogado->ci }}">{{ $abogado->usuario->nombre }}</option>
-                            @endforeach
+                                @foreach ($abogados as $abogado)
+                                    <option value="{{ $abogado->ci }}">{{ $abogado->usuario->nombre }}</option>
+                                @endforeach
 
-                        </select>
+                            </select>
 
-                    </div>
+                        </div>
+                    @endif
+
+
+
 
                     <div>
                         <label for="underline_select" class="sr-only">Underline select</label>
@@ -50,7 +61,7 @@
 
                             <option value="" selected>Seleccione el servicio</option>
                             @foreach ($servicios as $servicio)
-                                <option value="{{ $servicio->codigo}}">{{ $servicio->nombre }}</option>
+                                <option value="{{ $servicio->codigo }}">{{ $servicio->nombre }}</option>
                             @endforeach
 
                         </select>

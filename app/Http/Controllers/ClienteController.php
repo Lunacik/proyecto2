@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Counter;
 use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    private static $CODIGO_COUNTER=5;
     public function index()
     {
         $clientes = Cliente::all();
         
-        return view('clientes.index', ['clientes' => $clientes]);
+        Counter::plusCounter(static::$CODIGO_COUNTER);
+        $contador=Counter::getCounter(static::$CODIGO_COUNTER);
+
+
+        
+        return view('clientes.index', ['clientes' => $clientes,'contador'=>$contador]);
     }
 
     public function edit($ci)

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Counter;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +16,50 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Counter::create([
+            'nombre'=>'dashboard',
+            'codigo'=>1,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'casos',
+            'codigo'=>2,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'realizar cita',
+            'codigo'=>3,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'citas',
+            'codigo'=>4,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'clientes',
+            'codigo'=>5,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'abogados',
+            'codigo'=>6,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'usuarios',
+            'codigo'=>7,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'servicios',
+            'codigo'=>8,
+            'contador'=>0
+        ]);
+        Counter::create([
+            'nombre'=>'pagos',
+            'codigo'=>9,
+            'contador'=>0
         ]);
     }
 }

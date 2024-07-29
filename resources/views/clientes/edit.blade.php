@@ -1,6 +1,6 @@
 <x-app-layout>
     <main class="p-4 sm:ml-64 h-full">
-        <div class="p-4 mt-10">
+        <div class="p-4 mt-10 dark:text-white">
             <div class="flex justify-center">
                 <h6 class="text-lg font-bold">Formulario de edicion cliente</h6>
             </div>
@@ -10,7 +10,7 @@
 
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="number" name="ci" value="{{ old('ci', $cliente->usuario->ci) }}"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                        class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                     border-gray-300 appearance-none 
                     focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
@@ -43,7 +43,7 @@
 
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="text" name="nombre" value="{{ old('nombre', $cliente->usuario->nombre) }}"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                        class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                     border-gray-300 appearance-none 
                     focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
@@ -77,7 +77,7 @@
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="email" name="celectronico"
                         value="{{ old('celectronico', $cliente->usuario->celectronico) }}"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                        class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                     border-gray-300 appearance-none 
                     focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
@@ -113,7 +113,7 @@
                     <div class="relative z-0 w-full mb-5 group">
                         <input type="date" name="fnacimiento"
                             value="{{ old('fnacimiento', $cliente->usuario->fnacimiento) }}"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                            class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                         border-gray-300 appearance-none 
                         focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " required />
@@ -129,7 +129,7 @@
                     <div class="flex flex-col">
                         <div class="relative z-0 w-full group mb-1">
                             <input type="text" name="sexo" value="{{ old('sexo', $cliente->usuario->sexo) }}"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                                class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                             border-gray-300 appearance-none 
                             focus:outline-none focus:ring-0 focus:border-blue-600 peer
                             "
@@ -170,7 +170,7 @@
 
                     <div class="relative z-0 w-full mb-5 group">
                         <input type="number" name="nidentificacion" value="{{ old('nidentificacion', $cliente->nidentificacion) }}"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
+                            class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 
                         border-gray-300 appearance-none 
                         focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " required />

@@ -4,20 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Abogado;
 use App\Models\Cliente;
+use App\Models\Counter;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    private static $CODIGO_COUNTER=1;
     //
     public function index(){
 
+        Counter::plusCounter(static::$CODIGO_COUNTER);
+        $contador=Counter::getCounter(static::$CODIGO_COUNTER);
+        
         $cantidadAbogados=Abogado::all()->count();
         $cantidadClientes=Cliente::all()->count();
-        
 
-        return view('dashboard.index',['abogados'=>$cantidadAbogados,'clientes'=>$cantidadClientes]);
+        return view('dashboard.index',['abogados'=>$cantidadAbogados,'clientes'=>$cantidadClientes,'contador'=>$contador]);
     }
 
     public function getCantidadServiciosDistintos(){

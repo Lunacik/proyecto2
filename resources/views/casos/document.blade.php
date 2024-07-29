@@ -3,17 +3,18 @@
     <main class="p-4 sm:ml-64 h-full">
         <div class="p-4 mt-10">
             <div class="flex justify-center">
-                <h6 class="text-lg font-bold">Registro de documento para el caso : {{$caso->codigo}}</h6>
+                <h6 class="text-lg font-bold dark:text-white">Registro de documento para el caso : {{$caso->codigo}}</h6>
             </div>
 
-            <form class="max-w-md mx-auto" method="POST" action="{{route('caso.documento.store',$caso->codigo)}}">
+            <form class="max-w-md mx-auto " method="POST" action="{{route('caso.documento.store',$caso->codigo)}}">
                 @csrf
 
-                <div class="relative z-0 w-full mb-5 group">
+                <div class="relative z-0 w-full mb-5 group ">
                     <input type="text" name="nombre" value="{{ old('nombre') }}"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
                     border-gray-300 appearance-none 
-                    focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    focus:outline-none focus:ring-0 focus:border-blue-600 peer
+                    dark:text-white"
                         placeholder=" " required />
                     <label for="ci"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 
@@ -46,7 +47,8 @@
                     <input type="number" name="numero" value="{{ old('numero') }}"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 
                     border-gray-300 appearance-none 
-                    focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    focus:outline-none focus:ring-0 focus:border-blue-600 peer
+                    dark:text-white"
                         placeholder=" " required />
                     <label for="numero"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 
