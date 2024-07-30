@@ -164,7 +164,7 @@ class PagoFacil
         $lcNroPago             = "UAGRM-SA-GRUPO3-".$idTransaction;
         $lnMontoClienteEmpresa = 0.01;
         $lcCorreo              = $user['correo'];
-        $lcUrlCallBack         = "";
+        $lcUrlCallBack         = "https://www.tecnoweb.org.bo/inf513/grupo03sa/project/public/api/pagos/verify/callback";
         $lcUrlReturn           = "";
         $laPedidoDetalle       = "";
 
