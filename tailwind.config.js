@@ -5,10 +5,15 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
+  
   theme: {
-    extend: {},
+    extend:{
+      fontFamily: {
+        body:'Oswald'
+    }
+  }
+    
   },
-  plugins: [],
   darkMode: 'class',
 }
 

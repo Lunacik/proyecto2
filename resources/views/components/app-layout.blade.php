@@ -28,7 +28,7 @@
     </x-sidebar>
 
     {{ $slot }}
-
+    <script src="../resources/js/data.js"></script>
     <script>
         const openSidebar = () => {
             const nav = document.getElementById('logo-sidebar')
@@ -41,6 +41,33 @@
             }
         }
 
+        const openDropdownTheme = () => {
+            const dropd = document.getElementById('dropdown-theme')
+            const classNav = dropd.classList.contains('hidden')
+            if (classNav) {
+                dropd.classList.remove('hidden')
+            } else {
+                dropd.classList.add('hidden')
+            }
+        }
+        const handlechangeTheme = (value) => {
+            const body = document.body
+            switch (value) {
+                case 'joven':
+                    body.classList.add('font-mono')
+                    body.classList.remove('text-xl')
+                    localStorage.setItem('theme', 'joven')
+                    break;
+
+                default:
+                    body.classList.remove('font-mono')
+                    body.classList.add('text-xl')
+                    localStorage.setItem('theme', 'mix')
+                    break;
+            }
+        }
+
+
         const openDropdown = () => {
             const dropd = document.getElementById('dropdown-user')
             const classNav = dropd.classList.contains('hidden')
@@ -52,9 +79,57 @@
                 dropd.classList.add('hidden')
             }
         }
+
+        const inputSearch = document.getElementById('topbar-search')
+        inputSearch.addEventListener("keyup", (event) => {
+            const listSearch=document.getElementById('list-search')
+            listSearch.innerHTML=''
+
+            const textoIngresado = event.target.value;
+            if(textoIngresado){
+                const value=data.filter(x=>x.titulo.includes(textoIngresado))
+                value.forEach(element => {
+                    listSearch.insertAdjacentHTML('afterbegin', 
+                    `<li class="p-2 w-full">
+                            <a href="#" class="" role="none">
+                                <p class="text-sm " role="none">
+                                    ${element.titulo}
+                                </p>
+                                <p class="text-sm font-medium  truncate" role="none">
+                                    ${element.descripcion}
+                                </p>
+                            </a>
+                        </li>`
+                    )
+                });
+            }
+        });
+        inputSearch.addEventListener("focusout", (event) => {
+            
+        })
+        
     </script>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const theme = localStorage.getItem('theme')
+            const body = document.body
+            if (theme) {
+                switch (theme) {
+                    case 'joven':
+                        body.classList.add('font-mono')
+                        body.classList.remove('text-xl')
+                        localStorage.setItem('theme', 'joven')
+                        break;
+
+                    default:
+                        body.classList.remove('font-mono')
+                        body.classList.add('text-xl')
+                        localStorage.setItem('theme', 'mix')
+                        break;
+                }
+            }
+        });
         const enable = document.getElementById('enablehour')
         const disable = document.getElementById('disablehour')
         enable.addEventListener('click', () => {
@@ -80,9 +155,7 @@
     </script>
 
     <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-
-
+        //Cambio de acuerdo a zona horaria
         if (localStorage.getItem('autohour')) {
             const enable = document.getElementById('enablehour')
             const disable = document.getElementById('disablehour')
@@ -101,12 +174,12 @@
             } else {
                 enable.hidden = true
                 disable.hidden = false
-                
+
                 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window
                         .matchMedia(
                             '(prefers-color-scheme: dark)').matches)) {
-                    
-                        document.documentElement.classList.add('dark');
+
+                    document.documentElement.classList.add('dark');
                 } else {
                     document.documentElement.classList.remove('dark')
                 }
@@ -116,14 +189,15 @@
             localStorage.setItem('autohour', 'true')
             if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
                     '(prefers-color-scheme: dark)').matches)) {
-                
-                    document.documentElement.classList.add('dark');
+
+                document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark')
             }
         }
     </script>
     <script>
+        //Cambios de temas
         var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
