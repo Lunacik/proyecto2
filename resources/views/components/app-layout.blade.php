@@ -144,7 +144,6 @@
             enable.hidden = false
             disable.hidden = true
             const nowHour = new Date().getHours()
-            console.log(nowHour);
             if (nowHour >= 8 && nowHour <= 18) {
                 document.documentElement.classList.remove('dark');
             } else {

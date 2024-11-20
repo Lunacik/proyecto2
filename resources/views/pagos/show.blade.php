@@ -183,12 +183,9 @@
 
                 loadingQr(false)
 
-                console.log(codigo)
                 data.append('email', email)
                 data.append('nombre', nombre)
                 data.append('telefono', telefono)
-
-                console.log(Object.fromEntries(data.entries()))
                 
                 const response = await fetch(`http://localhost/project/public/api/pagos/${codigo}/qr`, {
                     method: 'POST',
@@ -199,7 +196,6 @@
                 activeButton(false)
 
                 const values = await response.json()
-                console.log(values)
                 if(values.ok){
                     const imgElement = document.getElementById('imgresource')
                     imgElement.src = values.result.qr
@@ -212,7 +208,6 @@
             } catch (e) {
                 loadingQr(true)
                 activeButton(false)
-                console.log(e);
             }
         }
 
